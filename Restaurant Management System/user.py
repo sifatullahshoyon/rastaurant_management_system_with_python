@@ -37,11 +37,18 @@ class Admin(User):
     
     def view_employee(self, restaurent):
         restaurent.view_employee()
+    
+    def add_new_item(self, restaurent, item):
+        restaurent.menu.add_menu_item(item)
+    
+    def remove_item(self, restaurent, item):
+        restaurent.menu.remove_item(item)
 
 class Restaurent:
     def __init__(self, name):
         self.name = name
         self.employees = [] # eta hocche amader database
+        self.menu = FoodItem()  
     
     def add_employee(self, employee):
         self.employees.append(employee)
@@ -71,7 +78,21 @@ class Menu:
             print("Item Deleted.")
         else:
             print("Item Not Found.")
+    
+    def show_menu(self):
+        print('\n****** Menu ******\n')
+        print('Name\tPrice\tQuantity\n')
+        for item in self.items:
+            print(f'{item.name}\t{item.price}\t{item.quantity}')
+
+class FoodItem:
+    def __init__(self, name, price, quantity):
+        self.name = name
+        self.price = price
+        self.quantity = quantity
 
 ad = Admin("Karim", "karim@gmail.com", "123456", "Dhaka")
-ad.add_employee("Sagor", "s@gmail.com", "456789", "khulna", 32, "Chef", 12000)
-ad.view_employee()
+mn = Menu()
+item = FoodItem('Pizza', 12.54, 10)
+mn.add_menu_item(item)
+mn.show_menu()
