@@ -14,15 +14,17 @@ class User(ABC):
 class Customer(User):
     def __init__(self, name, email, phone, address):
         super().__init__(name, phone, email, address)
-        self.cart = None
+        self.cart = Order()
     
     def view_menu(self, restaurent):
         restaurent.menu.show_menu()
     
-    def add_to_cart(self, restaurent, item_name):
+    def add_to_cart(self, restaurent, item_name, quantity):
         item = restaurent.menu.find_item(item_name)
         if item:
-            pass
+            item.quantity = quantity
+            self.cart.add_item(item)
+            print('Item Added.')
         else:
             print('Item Not Found!')
     
@@ -90,7 +92,7 @@ class Restaurent:
     def __init__(self, name):
         self.name = name
         self.employees = [] # eta hocche amader database
-        self.menu = FoodItem()  
+        self.menu = Menu()  
     
     def add_employee(self, employee):
         self.employees.append(employee)
@@ -134,7 +136,15 @@ class FoodItem:
         self.quantity = quantity
 
 ad = Admin("Karim", "karim@gmail.com", "123456", "Dhaka")
+mama_res = Restaurent('Mama Restaurent')
 mn = Menu()
 item = FoodItem('Pizza', 12.54, 10)
-mn.add_menu_item(item)
+item2 = FoodItem('Burger', 10, 30)
+admin = Admin('Rahim', 'rahim@gmail.com', 975236, 'Dhaka')
+admin.add_new_item(mama_res, item)
+admin.add_new_item(mama_res, item2)
+mn.add_menu_item(item2)
 mn.show_menu()
+
+customer1 = Customer('Rahim', 'rahim@gmail.com', 975236, 'Dhaka')
+customer1.view_menu(mama_res)
