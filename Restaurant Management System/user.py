@@ -88,22 +88,22 @@ class Admin(User):
 
 
 
-ad = Admin("Karim", "karim@gmail.com", "123456", "Dhaka")
-mama_res = Restaurent('Mama Restaurent')
-mn = Menu()
-item = FoodItem('Pizza', 12.54, 10)
-item2 = FoodItem('Burger', 10, 30)
-admin = Admin('Rahim', 'rahim@gmail.com', 975236, 'Dhaka')
-admin.add_new_item(mama_res, item)
-admin.add_new_item(mama_res, item2)
-mn.add_menu_item(item2)
-mn.show_menu()
+# ad = Admin("Karim", "karim@gmail.com", "123456", "Dhaka")
+# mama_res = Restaurent('Mama Restaurent')
+# mn = Menu()
+# item = FoodItem('Pizza', 12.54, 10)
+# item2 = FoodItem('Burger', 10, 30)
+# admin = Admin('Rahim', 'rahim@gmail.com', 975236, 'Dhaka')
+# admin.add_new_item(mama_res, item)
+# admin.add_new_item(mama_res, item2)
+# mn.add_menu_item(item2)
+# mn.show_menu()
 
-customer1 = Customer('Rahim', 'rahim@gmail.com', 975236, 'Dhaka')
-customer1.view_menu(mama_res)
+# customer1 = Customer('Rahim', 'rahim@gmail.com', 975236, 'Dhaka')
+# customer1.view_menu(mama_res)
 
-item_name = input("Enter item Name : ")
-item_quantity = int(input("Enter Item Quantity : "))
+# item_name = input("Enter item Name : ")
+# item_quantity = int(input("Enter Item Quantity : "))
 
-customer1.add_to_cart(mama_res, item_name, item_quantity)
-customer1.view_cart()
+# customer1.add_to_cart(mama_res, item_name, item_quantity)
+# customer1.view_cart()
