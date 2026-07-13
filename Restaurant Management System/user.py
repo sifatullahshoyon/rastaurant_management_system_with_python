@@ -3,6 +3,10 @@
 # Admin
 
 from abc import ABC
+from orders import Order
+from menu import Menu
+from food_item import FoodItem
+from restaurent import Restaurent
 
 class User(ABC):
     def __init__(self, name, phone, email, address):
@@ -41,7 +45,7 @@ class Customer(User):
     def pay_bill(self):
         print(f'Total {self.cart.total_price} Paid Successfully.')
         self.cart.clear()
-        
+
 class Employee(User):
     def __init__(self, name, email, phone, address, age, designation, salary):
         super().__init__(name, phone, email, address)
@@ -74,6 +78,9 @@ class Admin(User):
     
     def remove_item(self, restaurent, item):
         restaurent.menu.remove_item(item)
+    
+    def view_menu(self, restaurent):
+        restaurent.menu.show_menu()
 
 
 
